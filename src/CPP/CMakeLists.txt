@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(my_project_name)
+
+add_library(simple_kalman_filter lib/SimpleKalmanFilter.cpp)
+target_include_directories(simple_kalman_filter PUBLIC lib)
+
+add_executable(my_executable_name main.cpp)
+target_link_libraries(my_executable_name simple_kalman_filter)
