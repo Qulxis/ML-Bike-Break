@@ -69,4 +69,5 @@ The second (model_making) creates and trains a TF model and compresses it throug
 
 The third (test_evaluation) looks at the "test_data.cvs" file which contains the recording from a live test of our embedded model on the Arduino. It looks at the ground truth labels, the model's predictions, and the filtered sensor data.
 
-
+# Results
+To see the examples of our model's performance and outputs, see the images in the "Images" folder which contains both the performace over the entire test run as well as a close of of a few notable cases. The first cluster of false positives are mostly due to mislabeling as this corresponds to our rider remounting and reorienting the bike after braking. Data was somewhat smaller than ideal (under 20k samples) as data was collected by hand but overal this serves as a proof of concept and explore the necessary considerations to take into account when scaling to a production level device. 
