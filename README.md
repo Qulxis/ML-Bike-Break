@@ -1,10 +1,31 @@
 # ML-Bike-Break
-Embedded AI Project: Bike Brake using Arduino and TFLite
+Embedded AI Project: Machine Learning bike brake detection using Arduino and TFLite
 
-# Instructions:
+## Equipment and Tools:
+### Hardware:
+- Arduino Nano 33 BLE
+- Photoresistor
+### Software:
+- Arduino/C
+- Python
+
+To install the version of python libraries used run:
+```
+$ pip install -r requirements.txt
+```
+# Walkthrough:
+## Data Collection
+The collection of data was using the files in the src/arduino folder. 
+
+- "Data_collection_v2_with_filter" was used to collect data for training. 
+
+- "Break_classifier" is used to collect observation of a loaded model's performance.
+
+The remaining files in src/arduino are for experimentation.
+## Data Cleaning
 The two notebooks that we used in the end for data cleaning and generation are:
-- andrew_exploration_newdata.ipynb 
-- kalman_filter.ipynb
+- src/data_exploration_dataGen2.ipynb
+- src/kalman_filter_dataGen2.ipynb
 
 The first creates the cleaned dataset from the last collection of data we did which recorded both the kalman filtered data as well as the raw date. 
 
@@ -18,7 +39,16 @@ Additionally 2 different arduino nanos BLE 33s were used both to make ensure con
 
 The final ouptut for both are csv files (train_data4.csv and train_data1.5) that contain the filtered and adjusted sensor data along with the cleaned labels.
 
+# Evaluation
+For proof of concept and evaluation, we used:
+- src/simple_model_training.ipynb
+- src/model_making.ipynb
+- src/test_evaluation.ipynb
 
-For proof of concept, we used:
-- andrew_model_training.ipynb
+The first (simple_model_training) shows a sklearn logistic regression model on one set of data to show some experimentation with modeling. Note this is a simple model and is not the final model used in the embedded enviornment.
+
+The second (model_making) creates and trains a TF model and compresses it through TFLite. This can then be loaded onto the arudiono for inference for then running brake_classifier.ino. The output model from our training is in src/model.h
+
+The third (test_evaluation) looks at the "test_data.cvs" file which contains the recording from a live test of our embedded model on the Arduino. It looks at the ground truth labels, the model's predictions, and the filtered sensor data.
+
 
