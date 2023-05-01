@@ -17,17 +17,27 @@ $ pip install -r requirements.txt
 ## Data Collection
 The collection of data was using the files in the src/arduino folder. 
 
-- "Data_collection_v2_with_filter" was used to collect data for training. 
+- "src/arduino/Data_collection_v2" was used to collect raw sensor data for EDA. 
 
-- "Break_classifier" is used to collect observation of a loaded model's performance.
+- "src/arduino/Data_collection_v2_with_filter" was used to collect data for training including like kalman filtering. 
 
-The remaining files in src/arduino are for experimentation.
+- "src/arduino/Break_classifier" is used to collect observation of a loaded model's performance.
+
+(The remaining files in src/arduino are for experimentation)
+
+Training Data
+- **/src/Data/train/train_data1.csv:** Collected with "src/Data_collection_v2"
+- **/src/Data/train/train_data1.csv:** Collected with "src/Data_collection_v2_with_filter"
+
+Testing Data
+- **/src/Data/test_data.csv** Collected with "src/arduino/Break_classifier"
+
 ## Data Cleaning
 The two notebooks that we used in the end for data cleaning and generation are:
 - src/data_exploration_dataGen2.ipynb
 - src/kalman_filter_dataGen2.ipynb
 
-The first creates the cleaned dataset from the last collection of data we did which recorded both the kalman filtered data as well as the raw date. 
+The first creates the cleaned dataset from the last collection of data we did which recorded both the kalman filtered data as well as the raw date. It 
 
 The second creates the cleaned dataset from the first collection of data we did which contained the x, y, and z data from the sensor. The notebook explores all three and notes that only x has significant correlation. It then run a simulated kalman filter over the raw x-axis accelerometer data.
 
