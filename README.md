@@ -5,8 +5,8 @@ Embedded AI Project: Machine Learning bike brake detection using Arduino and TFL
 
 Authors:
 - [Andrew X](https://github.com/Qulxis)
-- [Kenneth M](https://github.com/sdb2174)
-- [Sam B](https://github.com/Kennethm-spec)
+- [Kenneth M](https://github.com/Kennethm-spec)
+- [Sam B](https://github.com/sdb2174)
 
 
 ## Equipment and Tools:
