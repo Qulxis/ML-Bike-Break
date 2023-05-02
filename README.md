@@ -43,7 +43,7 @@ Testing Data
 ## Data Cleaning
 The two notebooks that we used in the end for data cleaning and generation are:
 - src/data_exploration_dataGen2.ipynb
-- src/kalman_filter_dataGen2.ipynb
+- src/kalman_filter_dataGen1.ipynb
 
 The first creates the cleaned dataset from the last collection of data we did which recorded both the kalman filtered data as well as the raw date. It 
 
