@@ -42,12 +42,12 @@ Testing Data
 
 ## Data Cleaning
 The two notebooks that we used in the end for data cleaning and generation are:
-- src/data_exploration_dataGen2.ipynb
-- src/kalman_filter_dataGen1.ipynb
+- src/data_processing1_kalman_filter.ipynb
+- src/data_processing2_pre_filtered.ipynb
 
-The first creates the cleaned dataset from the last collection of data we did which recorded both the kalman filtered data as well as the raw date. It 
+The first creates the cleaned dataset from the first collection of data we did which contained the x, y, and z data from the sensor. The notebook explores all three and notes that only x has significant correlation. It then run a simulated kalman filter over the raw x-axis accelerometer data.
 
-The second creates the cleaned dataset from the first collection of data we did which contained the x, y, and z data from the sensor. The notebook explores all three and notes that only x has significant correlation. It then run a simulated kalman filter over the raw x-axis accelerometer data.
+The second creates the cleaned dataset from the last collection of data we did which recorded both the kalman filtered data as well as the raw data.
 
 Both notebooks filters out cases where valid break labels must be held for 4 sample steps. This is to remove noise from the photoresistor that we used to record with by hand. 
 
@@ -62,12 +62,17 @@ For proof of concept and evaluation, we used:
 - src/simple_model_training.ipynb
 - src/model_making.ipynb
 - src/test_evaluation.ipynb
+- src/baselines.ipynb
 
 The first (simple_model_training) shows a sklearn logistic regression model on one set of data to show some experimentation with modeling. Note this is a simple model and is not the final model used in the embedded enviornment.
 
-The second (model_making) creates and trains a TF model and compresses it through TFLite. This can then be loaded onto the arudiono for inference for then running brake_classifier.ino. The output model from our training is in src/model.h
+The second (model_making) creates and trains a TF model and compresses it through TFLite. This can then be loaded onto the arudiono for inference for then running brake_classifier.ino. The output model from our training is in src/model.h. It also contains a the performance of our model with a confusion matrix.
 
 The third (test_evaluation) looks at the "test_data.cvs" file which contains the recording from a live test of our embedded model on the Arduino. It looks at the ground truth labels, the model's predictions, and the filtered sensor data.
 
+The fourth evaluates the performance of a naive thresholding model. The results are compared to model_making's in our paper. We use serveral possible thresholding methods to make sure we are comparing our model agains the best possible thresholding method which is currently what is available on the market as described in our [video](https://www.youtube.com/watch?v=RIn2AcNfQwM&ab_channel=KennethMucyo).
 # Results
 To see the examples of our model's performance and outputs, see the images in the "Images" folder which contains both the performace over the entire test run as well as a close of of a few notable cases. The first cluster of false positives are mostly due to mislabeling as this corresponds to our rider remounting and reorienting the bike after braking. Data was somewhat smaller than ideal (under 20k samples) as data was collected by hand but overal this serves as a proof of concept and explore the necessary considerations to take into account when scaling to a production level device. 
+
+A final evaluation is concluded in our paper:
+- Paper_ML_Bike_Break
