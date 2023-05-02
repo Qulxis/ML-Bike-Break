@@ -2,7 +2,7 @@
 Embedded AI Project: Machine Learning bike brake detection using Arduino and TFLite.
 
 ### [Watch our Project Video!](https://www.youtube.com/watch?v=RIn2AcNfQwM&ab_channel=KennethMucyo)
-
+### [Read Our Paper](https://github.com/Qulxis/ML-Bike-Break/blob/main/Paper_ML_Bike_Break.pdf)
 Authors:
 - [Andrew X](https://github.com/Qulxis)
 - [Kenneth M](https://github.com/Kennethm-spec)
